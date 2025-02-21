@@ -1,17 +1,31 @@
 const express = require('express');
 const router = express.Router();
 
-// Sample exercises data
-const exercises = [
-  { id: 1, name: "Push-ups", type: "strength", duration: 10, calories_burned: 50 },
-  { id: 2, name: "Running", type: "cardio", duration: 30, calories_burned: 250 },
-  { id: 3, name: "Cycling", type: "cycling", duration: 45, calories_burned: 300 },
-  { id: 4, name: "Yoga", type: "yoga", duration: 60, calories_burned: 200 }
-];
+//Getting exercises from user
+router.get('/:userId', async (req, res) =>{
+  try {
+    const exercises = await Exercise.find({userId: req.params.userId});
+    res.json(exercises);
+  } catch (error) {
+    res.status(500).json({message: error.message});
+  }
+})
 
-// Define GET / route
-router.get('/', (req, res) => {
-  res.json(exercises);
-});
+//POST a new exercise(loged in user)
+router.post('/', async(req, res) =>{
+  const {userId, name, type, duration, calories_burned} = req.body;
+  if(!userId || !name || !type || !duration ||!calories_burned){
+    return res.status(400).json({message: 'All fields are reqyired'});
+  }
+
+  const newExercise = new Exercise({ userId, name, type, duration, calories_burned});
+
+  try {
+    await newExercise.save();
+    res.status(201).json({ message: 'Exercise added successfully'});
+  } catch (error) {
+    res.status(500).json({message: error.message});
+  }
+})
 
 module.exports = router;
