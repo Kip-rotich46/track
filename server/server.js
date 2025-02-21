@@ -16,14 +16,15 @@ app.use(express.json());
 app.use(cors());
 
 //Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose
+    .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB Connected'))
-    .catch(error => console.log(error));
+    .catch(error => console.log("MongoDB Connection Error", error));
 
 //Use Routes
-app.use('api/users', userRoutes);
+app.use('/api/users', userRoutes);
 app.use('/api/exercises', exerciseRoutes);
 
-app.listen(PORT, ()=>{
+app.listen(PORT, () => {
     console.log(`Server is runnning on ${PORT}`)
 })
