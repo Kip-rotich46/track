@@ -2,11 +2,15 @@ import React from 'react';
 import AuthImage from '../assets/AuthImage.jpg';
 
 import Login from '../components/Login';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+    const navigate = useNavigate();
+
     const handleUserLogin = (userId) => {
         console.log("User logged in with ID:", userId);
         // You can also navigate to another page here or update global state
+        navigate("/dashboard");
       };
 
     return (
