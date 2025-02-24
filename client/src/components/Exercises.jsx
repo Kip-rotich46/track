@@ -11,7 +11,8 @@ const Exercises = () => {
   useEffect(() => {
     const fetchExercises = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/api/exercises');
+        const userId = "USER_ID";
+        const response = await axios.get(`http://localhost:3001/api/exercises/${userId}`);
         console.log('Exercise Data:', response.data);
         setExercises(response.data);
       } catch (err) {
@@ -61,7 +62,7 @@ const Exercises = () => {
       <div className="grid grid-cols-2 gap-4">
         {exercises.map((exercise) => (
           <div
-            key={exercise.id}
+            key={exercise._id}
             className="flex flex-col items-start justify-between p-4 border-b border-gray-200 rounded-md shadow-md shadow-amber-200"
           >
             {/* Main content row */}
