@@ -4,6 +4,7 @@ import {Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-do
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import Login from './components/Login';
+import Profile from './components/Profile';
 
 const App = () => {
   const [userId, setUserId] = useState(localStorage.getItem("userId") || null);
@@ -24,11 +25,28 @@ const App = () => {
           setUserId(id);
           localStorage.setItem("userId", id);
         }} />} />
-        {/*Protecting all the other routes */}
-        <Route path='/dashboard' element={userId ? <Dashboard/> : <Navigate to="/login" />} />
+        
+        {/* Protected Routes */}
+        <Route path='/dashboard/*' element={
+          userId ? <Dashboard /> : <Navigate to="/login" />
+        } />
+        <Route path='/exercises' element={
+          userId ? <Dashboard activeTab="exercises" /> : <Navigate to="/login" />
+        } />
+        <Route path='/nutrition' element={
+          userId ? <Dashboard activeTab="nutrition" /> : <Navigate to="/login" />
+        } />
+        <Route path='/health' element={
+          userId ? <Dashboard activeTab="health" /> : <Navigate to="/login" />
+        } />
+        <Route path='/profile' element={
+          userId ? <Profile userId={userId} /> : <Navigate to="/login" />
+        } />
 
-        {/*All other routes to home */}
-        <Route path='*' element={<Navigate to="/" />}/>
+        {/* Redirect unknown routes to dashboard if logged in, otherwise home */}
+        <Route path='*' element={
+          userId ? <Navigate to="/dashboard" /> : <Navigate to="/" />
+        }/>
       </Routes>
     </Router>
   )

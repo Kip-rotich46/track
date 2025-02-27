@@ -21,13 +21,13 @@ router.get('/:userId', async (req, res, next) =>{
 router.post('/', async(req, res) =>{
   const {userId, name, type, duration, calories_burned} = req.body;
 
-  if(!userId || !name || !type || !duration ||!calories_burned){
-    return res.status(400).json({message: 'All fields are reqyired'});
+  if(!userId || !name || !type || !duration || !calories_burned){
+    return res.status(400).json({message: 'All fields are required'});
   }
 
   
   try {
-    const newExercise = new Exercise({ userId, name, type, duration, calories_burned});
+    const newExercise = new ExerciseModel({ userId, name, type, duration, calories_burned});
     await newExercise.save();
     res.status(201).json({ message: 'Exercise added successfully', exercise: newExercise});
   } catch (error) {
