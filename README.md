@@ -8,7 +8,7 @@
 
 **Transform your fitness journey with intelligent tracking and analytics**
 
-[Live Demo](https://fittrack-demo.com) · [Report Bug](https://github.com/yourusername/fittrack/issues) · [Request Feature](https://github.com/yourusername/fittrack/issues)
+[Live Demo](https://fittrack-demo.com) · [Report Bug](https://github.com/yourusername/fittrack/issues) · [Request Feature]([https://github.com/yourusername/fittrack/issues](https://github.com/Kip-rotich46/track.git))
 
 </div>
 
@@ -46,7 +46,7 @@
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/Kip-rotich46/fittrack.git
+   [git clone https://github.com/Kip-rotich46/fittrack.git](https://github.com/Kip-rotich46/track.git)
    cd fittrack
    ```
 
@@ -136,7 +136,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Your Name - [@yourtwitter](https://twitter.com/yourtwitter) - email@example.com
 
-Project Link: [https://github.com/yourusername/fittrack](https://github.com/yourusername/fittrack)
+Project Link: [[https://github.com/yourusername/fittrack](https://github.com/yourusername/fittrack](https://github.com/Kip-rotich46/track.git))
 
 ## 🙏 Acknowledgments
 
